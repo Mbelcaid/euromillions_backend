@@ -5,7 +5,6 @@ import json
 from collections import Counter
 import random
 
-from fastapi import FastAPI
 from backend.import_draws import import_and_store  # adapte ce chemin si besoin
 from backend.database import Draw, SessionLocal, Prediction
 from backend.markov import HigherOrderMarkovChain
@@ -14,8 +13,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    # Orignes autorisées (dev + prod)
-    allow_origins=["http://localhost:3000", "https://euromillions-predictor.windsurf.build"],
+    allow_origins=["*"],  # Autorise toutes les origines
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
