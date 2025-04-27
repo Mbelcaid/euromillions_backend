@@ -14,8 +14,9 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Autorise toutes les origines pour le développement
-    allow_credentials=True,  # Active l'en-tête CORS Access-Control-Allow-Origin
+    # Orignes autorisées (dev + prod)
+    allow_origins=["http://localhost:3000", "https://euromillions-predictor.windsurf.build"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
